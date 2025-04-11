@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: calc((7 * $day-size) + 6px);
+  padding: 10px;
 
   &__day {
     display: flex;
@@ -42,16 +43,16 @@ body {
       }
     }
   }
-}
 
-@for $date from 28 through 30 {
-  .calendar--month-length-#{$date} .calendar__day:nth-child(n + #{$date + 1}) {
-    display: none;
+  @for $date from 28 through 30 {
+    &--month-length-#{$date} &__day:nth-child(n + #{$date + 1}) {
+      display: none;
+    }
   }
-}
 
-@each $day, $index in $start-day {
-  .calendar--start-day-#{$day} .calendar__day:first-child {
-    margin-left: $index * ($day-size + $day-gap);
+  @each $day, $index in $start-day {
+    &--start-day-#{$day} &__day:first-child {
+      margin-left: $index * ($day-size + $day-gap);
+    }
   }
 }
